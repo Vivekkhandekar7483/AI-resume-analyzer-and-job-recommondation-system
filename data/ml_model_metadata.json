@@ -1,0 +1,22 @@
+{
+  "total_resumes": 226,
+  "classes": [
+    "Business Analyst",
+    "Data Analyst",
+    "Hadoop / Big Data Engineer",
+    "Java Developer",
+    "Project Manager",
+    "QA / Test Engineer",
+    "Web Developer"
+  ],
+  "cv_accuracy": 88.07,
+  "class_distribution": {
+    "Java Developer": 98,
+    "Project Manager": 59,
+    "Business Analyst": 49,
+    "QA / Test Engineer": 8,
+    "Web Developer": 5,
+    "Hadoop / Big Data Engineer": 4,
+    "Data Analyst": 3
+  }
+}

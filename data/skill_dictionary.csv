@@ -1,0 +1,71 @@
+skill,category,aliases,topic
+Python,Programming,py,Python fundamentals and OOP
+Java,Programming,j2ee|core java,Java core concepts and OOP
+Spring Boot,Backend,spring|spring boot|springframework,Spring Boot microservices architecture
+Microservices,Backend,microservice architecture|RESTful microservices,Microservices design patterns
+Hibernate,Backend,jpa|orm,Hibernate ORM and persistence
+C++,Programming,cpp|c plus plus,C++ memory management and STL
+C#,Programming,csharp|c sharp,.NET and C# programming
+JavaScript,Programming,js|node.js|nodejs,JavaScript ES6+ and Node.js
+TypeScript,Programming,ts,TypeScript types and interfaces
+R,Programming,r-lang|r programming,R data structures and base functions
+HTML/CSS,Web,html|css|html5|css3,HTML5 semantics and CSS layout
+React,Web,reactjs|react.js,React functional components and hooks
+Next.js,Web,nextjs,Next.js full-stack framework
+SQL,Databases,mysql|postgresql|sqlite|sql server|oracle,SQL queries and indexing
+MongoDB,Databases,nosql|mongo,MongoDB document database
+Redis,Databases,redis cache,Redis caching and data structures
+Excel,Tools,ms excel|microsoft excel|spreadsheet,Excel formulas and pivot tables
+Power BI,Tools,powerbi|power bi dashboard,Power BI data modeling and DAX
+Tableau,Tools,,Tableau visual analytics
+Git,Tools,github|gitlab|version control,Git branching and GitHub workflows
+Linux,Tools,bash|shell|unix,Linux CLI and shell scripting
+Jira,Tools,atlassian jira|jira software,Agile project tracking with Jira
+Agile,Tools,agile methodology|scrum framework,Agile development practices
+Scrum,Tools,scrum master|daily standup,Scrum framework and sprint management
+PMP,Tools,project management professional|pmi,PMP project management principles
+BRD/PRD,Business Analysis,brd|prd|business requirement document,Business requirements documentation
+Requirements Gathering,Business Analysis,requirements analysis|use cases|user stories,Requirements elicitation & analysis
+Stakeholder Management,Management,stakeholder engagement,Client and stakeholder communication
+SDLC,Management,software development life cycle,Software Development Life Cycle phases
+Sprint Planning,Management,sprint backlog|backlog refinement,Agile sprint planning and estimations
+Hadoop,Data,hdfs|mapreduce|hadoop ecosystem,Hadoop distributed computing
+Hive,Data,apache hive|hive ql,Big data querying with Apache Hive
+Spark,Data,apache spark|pyspark,Distributed data processing with Apache Spark
+Selenium,Testing,selenium webdriver|test automation,Automated UI testing with Selenium
+QA Testing,Testing,quality assurance|software testing|test cases,Software QA testing methodologies
+Test Automation,Testing,automated testing|testing framework,Test automation frameworks
+Pandas,Data,,Pandas DataFrames and wrangling
+NumPy,Data,,NumPy numerical computing
+Data Visualization,Data,matplotlib|seaborn|plotly,Data visualization with Matplotlib & Plotly
+Statistics,Data,statistical analysis|inferential statistics,Descriptive and inferential statistics
+ETL,Data,extract transform load|data engineering|data pipeline,ETL pipeline engineering
+Data Structures,CS Fundamentals,dsa|algorithms|data structure,Data structures & algorithm design
+Machine Learning,ML,ml|supervised learning|unsupervised learning,Core machine learning algorithms
+scikit-learn,ML,sklearn|scikit learn,Scikit-learn ML pipelines
+Deep Learning,ML,neural networks|deep neural network|dnn,Deep neural network architecture
+TensorFlow,ML,keras,TensorFlow and Keras framework
+PyTorch,ML,,PyTorch dynamic neural networks
+NLP,ML,natural language processing|text mining,NLP text processing fundamentals
+Transformers,ML,bert|huggingface transformers,Transformer architectures & BERT
+Hugging Face,ML,huggingface,Hugging Face model hub & pipelines
+spaCy,ML,,spaCy NLP pipelines
+LLM,ML,llms|large language models|gpt|gemini|generative ai|genai,LLM prompt engineering and fine-tuning
+RAG,ML,retrieval augmented generation|retrieval-augmented generation,Retrieval-Augmented Generation architectures
+Embeddings,ML,vector embeddings|word embeddings|sentence transformers,Vector embeddings and similarity search
+Vector Database,ML,pinecone|chroma|faiss|weaviate|qdrant|vector db,Vector databases for semantic search
+Prompt Engineering,ML,prompt design|prompting,Prompt engineering techniques
+LangChain,ML,langchain|llamaindex,LangChain and LlamaIndex LLM workflows
+Agentic AI,ML,ai agents|multi-agent|autonomous agents,Agentic AI workflows and tools
+MCP,ML,model context protocol,Model Context Protocol integration
+OpenCV,Computer Vision,cv2|computer vision,OpenCV image processing
+CNN,Computer Vision,convolutional neural network|convolutional neural networks,Convolutional Neural Networks
+YOLO,Computer Vision,yolov5|yolov8|yolov9|object detection,YOLO real-time object detection
+FastAPI,Backend,,Building REST APIs with FastAPI
+Flask,Backend,,Flask web framework basics
+REST API,Backend,api|apis|restful,RESTful API design and standards
+Docker,Cloud and DevOps,containers|containerization,Docker containerization fundamentals
+Kubernetes,Cloud and DevOps,k8s,Kubernetes container orchestration
+CI/CD,Cloud and DevOps,continuous integration|continuous deployment|github actions,CI/CD pipelines with GitHub Actions
+MLflow,Cloud and DevOps,mlops|experiment tracking,MLflow experiment tracking and registry
+Cloud Deployment,Cloud and DevOps,aws|azure|gcp|heroku|render,Cloud deployment (AWS/GCP/Azure)

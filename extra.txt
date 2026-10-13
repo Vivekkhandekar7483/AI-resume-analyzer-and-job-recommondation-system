@@ -1,0 +1,10 @@
+--- Summary ---
+status
+ok    227
+
+Median skills found per resume: 11.0
+Files with zero skills matched: 0 / 227
+Files that errored out: 0 / 227
+
+Full results saved to: reports\batch_results.csv
+PS C:\Users\Asus\Desktop\ai_resume_analyzer> 

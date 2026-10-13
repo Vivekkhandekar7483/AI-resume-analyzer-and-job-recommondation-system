@@ -1,0 +1,13 @@
+role,required_skills,description
+Data Analyst,Python;SQL;Excel;Pandas;Power BI;Statistics;Data Visualization,"Analyses data and builds dashboards and reports to support business decisions"
+Data Scientist,Python;Statistics;Machine Learning;Pandas;NumPy;scikit-learn;SQL;Data Visualization,"Builds statistical and machine learning models to extract actionable insights from data"
+Machine Learning Engineer,Python;Machine Learning;scikit-learn;Pandas;FastAPI;Docker;MLflow;Git,"Trains and deploys machine learning models into scalable production systems"
+AI Engineer,Python;Deep Learning;LLM;RAG;REST API;PyTorch;Docker,"Builds intelligent AI applications using deep learning, LLMs, and RAG architectures"
+NLP Engineer,Python;NLP;Transformers;Hugging Face;spaCy;Deep Learning,"Builds natural language understanding and text processing models"
+Computer Vision Engineer,Python;OpenCV;CNN;YOLO;Deep Learning;PyTorch;NumPy,"Builds image analysis, object detection, and computer vision systems"
+Python Developer,Python;Flask;FastAPI;REST API;SQL;Git;Data Structures,"Develops high-performance backend web applications and REST APIs in Python"
+Web Developer,JavaScript;HTML/CSS;React;REST API;Git;MongoDB,"Builds modern interactive front-end and full-stack web applications"
+Business Analyst,SQL;Excel;Power BI;Tableau;Git;Jira;Agile;BRD/PRD;Requirements Gathering,"Gathers business requirements, designs process workflows, and bridges business and IT teams"
+Project Manager,Git;Jira;Agile;Scrum;PMP;Stakeholder Management;SDLC;Sprint Planning,"Leads cross-functional tech teams, manages project scope, timelines, and agile sprints"
+QA / Test Engineer,Java;Python;SQL;Git;Selenium;Test Automation;QA Testing;Jira,"Designs and executes automated test suites to ensure software quality and reliability"
+Hadoop / Big Data Engineer,Java;Python;SQL;Hadoop;Hive;Spark;ETL;Linux;Data Pipeline,"Engineers large-scale distributed data processing pipelines using Hadoop and Spark"

@@ -1,0 +1,11 @@
+
+streamlit
+pypdf
+python-docx
+pandas
+numpy
+scikit-learn
+plotly
+google-genai
+python-dotenv
+ 

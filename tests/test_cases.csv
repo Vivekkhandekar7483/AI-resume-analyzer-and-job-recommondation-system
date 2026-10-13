@@ -1,0 +1,4 @@
+Test Resume,Target Role,Expected Top Role,Actual Top Role,Pass Status,Comments
+Resume_Data_Analyst.docx,Data Analyst,Data Analyst,Data Analyst,PASS,Matches SQL Python Power BI Pandas Statistics
+Resume_ML_Engineer.docx,Machine Learning Engineer,Machine Learning Engineer,Machine Learning Engineer,PASS,Matches scikit-learn FastAPI Docker MLflow
+Resume_NLP_Engineer.docx,NLP Engineer,NLP Engineer,NLP Engineer,PASS,Matches Transformers Hugging Face spaCy Deep Learning
