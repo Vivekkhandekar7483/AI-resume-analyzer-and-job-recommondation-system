@@ -43,7 +43,14 @@ def ask(question: str, target_role: str, score: float, matched: list, missing: l
     if not api_key:
         raise RuntimeError("No Gemini API key found. Please add GEMINI_API_KEY to your .env file.")
 
+    past = ""
+    if history:
+        past = "--- EARLIER CONVERSATION ---\n" + "\n".join(
+            f"{m.get('role', 'user').title()}: {m.get('content', '')}" for m in history[-6:]
+        ) + "\n\n"
+
     context = (
+        f"{past}"
         f"--- CANDIDATE RESUME ANALYSIS CONTEXT ---\n"
         f"Target Role: {target_role}\n"
         f"Match Score: {score}%\n"

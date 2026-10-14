@@ -1,121 +1,147 @@
 # 🧭 AI Resume Analyzer & Job Recommendation System
 
-An NLP-based educational application that evaluates student resumes against target job roles, computes a hybrid match score, identifies missing skills, generates a week-by-week learning roadmap, exports analysis reports, and includes an interactive **Gemini AI Career Advisor Chatbot**.
+An NLP + Gemini-powered application that helps students understand how well their resume matches a target job role. It extracts skills from a PDF/DOCX resume, scores the resume against job roles, lists missing skills, builds a week-by-week learning roadmap, and includes an AI career advisor chatbot.
+
+> Match scores are estimates for learning guidance, **not** hiring decisions.
 
 ---
 
-## 🌟 Key Features
+## ✨ Features
 
-1. **Multi-Format Resume Upload**: Supports PDF (`.pdf`) and Word (`.docx`) resumes parsed completely in memory without permanent file storage.
-2. **Text Cleaning & Symbol Preservation**: Normalizes unstructured text while preserving critical technical symbols (`C++`, `C#`, `.NET`, `HTML/CSS`, `Next.js`). Strips protected personal information (gender, age, marital status) to eliminate bias.
-3. **Controlled Skill Dictionary**: 50+ technical skills organized into categories (*Programming, ML, Data, Databases, Backend, Web, Cloud & DevOps, Tools, Computer Vision, CS Fundamentals*) with alias mapping.
-4. **Hybrid Role Matching**: Combines **Skill Coverage (70%)** and **TF-IDF Cosine Similarity (30%)** to rank job roles accurately.
-5. **Skill-Gap Analysis & Roadmap**: Automatically identifies matched vs. missing skills and builds a personalized week-by-week learning roadmap.
-6. **Gemini AI Career Advisor**: Built-in chatbot powered by Google Gemini API (`GEMINI_API_KEY`) for interactive Q&A, interview advice, and resume optimization tips.
-7. **Downloadable Analysis Reports**: Export comprehensive text (`.txt`) match reports.
-8. **Interactive Streamlit Dashboard**: Clean visual UI with custom CSS, Plotly match score charts, quick sample resume loaders, and interactive tabs.
+- **PDF & DOCX upload** – parsed in memory, nothing is stored on disk.
+- **Text cleaning** – lowercases, removes emails, phone numbers and links, keeps `C++`, `C#`, `.NET`; protected details (gender, age, religion, nationality, marital status) are stripped so they can never influence scoring.
+- **Skill extraction** – controlled dictionary of ~70 skills in categories (Programming, ML, Data, Databases, Backend, Web, Cloud & DevOps, Tools, Testing, Business Analysis, …) with alias matching.
+- **Hybrid keyword scoring** – 70% skill coverage + 30% TF-IDF cosine similarity against each job role in `data/job_roles.csv`.
+- **Gemini deep analysis** – reads the resume like a recruiter and returns, as validated structured JSON: best-fit role, experience level, a summary, strengths, weaknesses, resume-improvement tips, and extra skills. Skills not present in the resume text are discarded to prevent hallucinations.
+- **Blended final score** – `40% keyword score + 60% Gemini fit score` (falls back to keyword-only if Gemini is unavailable).
+- **Top 3 recommended roles** with match % and a chart of all roles.
+- **Skill-gap analysis and learning roadmap**, downloadable text report.
+- **Gemini career advisor chatbot** with conversation memory.
+- **Optional FastAPI backend** (`api.py`) exposing the same pipeline as a REST API.
 
----
+## 🖥️ App layout
 
-## 📁 Suggested Folder Structure
+| Tab | Contents |
+|---|---|
+| 📋 Overview | Match score cards, Gemini summary, top 3 recommended roles with %, chart of all roles |
+| 🧩 Skills & Gaps | Detected skills, matched/missing skills, strengths, weaknesses, how to improve the resume |
+| 🗺️ Roadmap & Report | Week-by-week learning plan and report download |
+| 💬 AI Advisor | Chat with the Gemini career mentor |
+
+## 🔄 How it works
+
+```
+Upload resume → extract text → clean text → keyword skill extraction
+      → hybrid role scoring ──┐
+      → Gemini analysis ──────┴→ blended score → top roles, gaps, roadmap, report
+```
+
+## 📁 Project structure
 
 ```
 ai_resume_analyzer/
-├── app.py                  # Streamlit Dashboard & Web Interface
-├── resume_parser.py        # PDF & DOCX text extraction
-├── text_cleaner.py         # Text cleaning, normalization & PII stripping
-├── skill_extractor.py      # Regex alias-aware skill extraction
-├── job_matcher.py          # TF-IDF + Skill Coverage hybrid matching engine
-├── roadmap_generator.py    # Learning roadmap generator
-├── report_generator.py     # Text report exporter
-├── ai_chat.py              # Gemini API AI Chatbot integration
-├── batch_test.py           # Bulk evaluation CLI tool
-├── requirements.txt        # Python package dependencies
-├── .env.example            # Environment variables template
-├── .gitignore              # Git ignore rules
-├── README.md               # Project documentation
-│
+├── app.py                  # Streamlit dashboard
+├── pipeline.py             # Runs the full analysis (used by app and API)
+├── gemini_analyzer.py      # Structured Gemini resume analysis + validation
+├── ai_chat.py              # Gemini career-advisor chatbot
+├── api.py                  # Optional FastAPI backend
+├── resume_parser.py        # PDF / DOCX text extraction
+├── text_cleaner.py         # Cleaning and protected-info removal
+├── skill_extractor.py      # Alias-aware skill extraction
+├── job_matcher.py          # Skill coverage + TF-IDF scoring
+├── roadmap_generator.py    # Learning roadmap
+├── report_generator.py     # Text report
+├── relabel_with_gemini.py  # (optional) label a resume dataset with Gemini
+├── train_model.py          # (optional) train/evaluate a role classifier
+├── batch_test.py           # Run the pipeline over a folder of resumes
+├── requirements.txt
+├── .env.example            # Template for your API key
 ├── data/
-│   ├── job_roles.csv       # Job role dataset & skill requirements
-│   └── skill_dictionary.csv# Skill dictionary & category/alias mappings
-│
-├── sample_resumes/         # Pre-built sample resumes for testing
-│   ├── Resume_Data_Analyst.docx
-│   ├── Resume_ML_Engineer.docx
-│   └── Resume_NLP_Engineer.docx
-│
-├── reports/                # Output analysis reports & batch test logs
-└── tests/                  # Automated unit test suite
-    ├── test_cases.csv      # Evaluation benchmark matrix
-    └── test_pipeline.py    # Unittest pipeline tests
+│   ├── job_roles.csv
+│   ├── skill_dictionary.csv
+│   └── Resumes/            # (not in the repo) your private resume dataset
+├── sample_resumes/         # Anonymised sample resumes
+└── reports/                # Generated output (not in the repo)
 ```
 
----
+## 🛠️ Setup
 
-## 🛠️ Installation & Setup
+**Requirements:** Python 3.10+ and a free Gemini API key.
 
-### 1. Clone or Open the Repository
 ```bash
+git clone https://github.com/<your-username>/ai_resume_analyzer.git
 cd ai_resume_analyzer
-```
 
-### 2. Install Dependencies
-```bash
+python -m venv .venv
+# Windows:      .venv\Scripts\activate
+# macOS/Linux:  source .venv/bin/activate
+
 pip install -r requirements.txt
 ```
 
-### 3. Configure Gemini API Key (Optional for Chatbot)
-Copy `.env.example` to `.env` and paste your Gemini API Key:
-```bash
-cp .env.example .env
-```
-Inside `.env`:
+### Get your own Gemini API key
+
+1. Open [Google AI Studio](https://aistudio.google.com/app/apikey) and create an API key.
+2. Copy `.env.example` to `.env` (Windows: `copy .env.example .env`).
+3. Put your key in `.env`:
+
 ```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
+GEMINI_API_KEY=your_key_here
 ```
-*(Get a free key from [Google AI Studio](https://aistudio.google.com/app/apikey))*
 
----
+The `.env` file is private and is never committed. Without a key the app still works using keyword scoring only; the Gemini analysis, strengths/weaknesses and chatbot need a key.
 
-## 🚀 How to Run
+## 🚀 Run
 
-### Run the Streamlit Web Application
 ```bash
 streamlit run app.py
 ```
-Open your browser at `http://localhost:8501`.
 
-### Run Automated Unit Tests
+Open http://localhost:8501, upload a resume (or pick a sample), choose a target role.
+
+### Optional: FastAPI backend
+
 ```bash
-python -m unittest discover tests
+uvicorn api:app --reload --port 8000
 ```
 
-### Run Batch Test on Folder of Resumes
+Interactive docs at http://localhost:8000/docs. Endpoints: `GET /health`, `GET /roles`, `POST /analyze`, `POST /chat`.
+
+### Optional: batch test and classifier training
+
+These need a folder of resumes at `data/Resumes/` (not included in this repository for privacy).
+
 ```bash
-python batch_test.py sample_resumes
+python batch_test.py data/Resumes        # run the pipeline over many resumes
+python relabel_with_gemini.py            # label resumes with roles from job_roles.csv
+python train_model.py                    # train and evaluate a role classifier
 ```
 
----
+`train_model.py` reports the majority-class baseline, accuracy, macro-F1, per-class precision/recall and a confusion matrix. The classifier is optional and is not used by the dashboard.
 
-## 📊 Minimum Features Checklist
+## ⚖️ Responsible AI
 
-- [x] Upload PDF or DOCX resume
-- [x] Extract and clean unstructured text
-- [x] Identify 50+ technical skills
-- [x] Compare resume against 8 target job roles
-- [x] Calculate hybrid match score (Skill Coverage + TF-IDF)
-- [x] Recommend top 3 suitable roles
-- [x] Identify matched vs. missing skills
-- [x] Generate week-by-week learning roadmap
-- [x] Downloadable analysis report
-- [x] Gemini AI Chatbot integration
-- [x] Streamlit web dashboard
-- [x] Automated test suite & documentation
+- Scores are estimates for guidance, not automated hiring or rejection.
+- Protected personal information is removed before scoring and before text is sent to Gemini.
+- Only **cleaned** resume text (no emails, phone numbers or links) is sent to the Gemini API.
+- Resumes are processed in memory and not stored by the app.
+- Missing keywords do not always mean missing ability.
 
----
+## ⚠️ Limitations
 
-## ⚖️ Responsible AI Guidelines
+- Keyword matching can miss skills described in different words; Gemini helps but can still be wrong.
+- Scanned image-only PDFs are not supported (no OCR).
+- Gemini scores can vary slightly between runs.
+- The sample dataset is dominated by Java, Project Manager and Business Analyst resumes, so a classifier trained on it is weak for ML/NLP/CV roles.
 
-- **Guidance Only**: Match scores are estimates for educational guidance, not automated recruiter decisions.
-- **Fairness & Privacy**: Protected personal information (gender, age, marital status, religion) is stripped and ignored during evaluation.
-- **Data Protection**: Resumes are processed in memory and never stored permanently on external servers.
+## 🔑 API key & cost
+
+Every person who runs the project locally uses **their own** Gemini API key. Your key is never part of the repository. Check [Google's current pricing](https://ai.google.dev/pricing) for free-tier limits.
+
+## 🧰 Tech stack
+
+Python · Streamlit · Plotly · pandas · scikit-learn · pypdf · python-docx · Google Gemini API (`google-genai`) · FastAPI · Pydantic
+
+## 📄 License
+
+Add a license of your choice (for example MIT) before publishing.

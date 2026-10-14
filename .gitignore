@@ -1,8 +1,25 @@
+# Secrets (never commit these)
 .env
+.streamlit/secrets.toml
+
+# Python
 __pycache__/
 *.pyc
+.venv/
+venv/
 .pytest_cache/
-.streamlit/secrets.toml
+
+# Private data: real resumes and anything derived from them
+data/Resumes/*
+!data/Resumes/.gitkeep
+data/resume_labels.csv
+data/ml_resume_classifier.joblib
+data/ml_model_metadata.json
 reports/*.csv
 reports/*.txt
-!.gitkeep
+!reports/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
