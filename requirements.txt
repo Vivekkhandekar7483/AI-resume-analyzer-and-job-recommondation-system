@@ -8,4 +8,18 @@ scikit-learn
 plotly
 google-genai
 python-dotenv
- 
+ streamlit
+pypdf
+python-docx
+pandas
+numpy
+scikit-learn
+joblib
+plotly
+google-genai
+python-dotenv
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+requests

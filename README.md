@@ -2,7 +2,7 @@
 
 An NLP + Gemini-powered application that helps students understand how well their resume matches a target job role. It extracts skills from a PDF/DOCX resume, scores the resume against job roles, lists missing skills, builds a week-by-week learning roadmap, and includes an AI career advisor chatbot.
 
-> Match scores are estimates for learning guidance, **not** hiring decisions.
+>
 
 ---
 
@@ -44,14 +44,12 @@ ai_resume_analyzer/
 ├── pipeline.py             # Runs the full analysis (used by app and API)
 ├── gemini_analyzer.py      # Structured Gemini resume analysis + validation
 ├── ai_chat.py              # Gemini career-advisor chatbot
-├── api.py                  # Optional FastAPI backend
 ├── resume_parser.py        # PDF / DOCX text extraction
 ├── text_cleaner.py         # Cleaning and protected-info removal
 ├── skill_extractor.py      # Alias-aware skill extraction
 ├── job_matcher.py          # Skill coverage + TF-IDF scoring
-├── roadmap_generator.py    # Learning roadmap
+├── roadmap_generator.py    # create learning roadmap
 ├── report_generator.py     # Text report
-├── relabel_with_gemini.py  # (optional) label a resume dataset with Gemini
 ├── train_model.py          # (optional) train/evaluate a role classifier
 ├── batch_test.py           # Run the pipeline over a folder of resumes
 ├── requirements.txt
@@ -61,7 +59,8 @@ ai_resume_analyzer/
 │   ├── skill_dictionary.csv
 │   └── Resumes/            # (not in the repo) your private resume dataset
 ├── sample_resumes/         # Anonymised sample resumes
-└── reports/                # Generated output (not in the repo)
+└── reports/  
+    └──batch_results.csv  
 ```
 
 ## 🛠️ Setup
@@ -126,6 +125,7 @@ python train_model.py                    # train and evaluate a role classifier
 - Only **cleaned** resume text (no emails, phone numbers or links) is sent to the Gemini API.
 - Resumes are processed in memory and not stored by the app.
 - Missing keywords do not always mean missing ability.
+ Match scores are estimates for learning guidance, **not** hiring decisions.
 
 ## ⚠️ Limitations
 
@@ -133,6 +133,10 @@ python train_model.py                    # train and evaluate a role classifier
 - Scanned image-only PDFs are not supported (no OCR).
 - Gemini scores can vary slightly between runs.
 - The sample dataset is dominated by Java, Project Manager and Business Analyst resumes, so a classifier trained on it is weak for ML/NLP/CV roles.
+-Limited technical job roles are added
+-
+## Note
+for better analysis of the resume add gemini api key in .env file and connect to your internet connection and run your project.
 
 ## 🔑 API key & cost
 
